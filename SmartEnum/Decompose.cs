@@ -14,7 +14,7 @@ namespace SmartEnum
 
             var val = e as Enum;
 
-            return GetValues<TEnum>().Where(x => val.HasFlag(x as Enum));
+            return GetValues<TEnum>().Where(x => (Convert.ToInt64(val) & Convert.ToInt64(x)) != 0);
         }
     }
 }
