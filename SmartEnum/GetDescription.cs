@@ -9,11 +9,11 @@ namespace SmartEnum
     {
         public static string GetDescription(this Enum e)
         {
-            string value;
+            string desc;
 
-            if (Descriptions.TryGetValue(e, out value))
+            if (Descriptions.TryGetValue(e, out desc))
             {
-                return value;
+                return desc;
             }
 
             Type type = e.GetType();

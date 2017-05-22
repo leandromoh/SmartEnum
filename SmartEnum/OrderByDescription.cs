@@ -6,13 +6,13 @@ namespace SmartEnum
 {
     public static partial class EnumExtensions
     {
-        public static Expression<Func<TSource, int>> DescriptionOrder<TSource, TEnum>(this Expression<Func<TSource, TEnum>> source)
+        public static Expression<Func<TSource, int>> OrderByDescription<TSource, TEnum>(this Expression<Func<TSource, TEnum>> source)
             where TEnum : struct
         {
-            return DescriptionOrder(source, EnumExtensions.GetDescription);
+            return OrderByDescription(source, EnumExtensions.GetDescription);
         }
 
-        public static Expression<Func<TSource, int>> DescriptionOrder<TSource, TEnum>(this Expression<Func<TSource, TEnum>> source, Func<Enum, string> func)
+        public static Expression<Func<TSource, int>> OrderByDescription<TSource, TEnum>(this Expression<Func<TSource, TEnum>> source, Func<Enum, string> func)
             where TEnum : struct
         {
             var enumType = typeof(TEnum);
