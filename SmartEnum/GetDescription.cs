@@ -29,18 +29,17 @@ namespace SmartEnum
 
             foreach (Enum e in Enum.GetValues(enumType))
             {
-                descriptionDictionary[e] = Descriptions[e] = e.GetDescriptionInAttribute(enumType);
+                descriptionDictionary[e] = Descriptions[e] = GetDescriptionFromAttribute(enumType.GetField(e.ToString()));
             }
 
             return descriptionDictionary;
         }
 
-        private static string GetDescriptionInAttribute(this Enum e, Type enumType)
+        private static string GetDescriptionInAttribute(FieldInfo field)
         {
-            FieldInfo field = enumType.GetField(e.ToString());
             object[] customAttributes = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-            return customAttributes.Length > 0 ? (customAttributes[0] as DescriptionAttribute).Description : e.ToString();
+            return customAttributes.Length > 0 ? (customAttributes[0] as DescriptionAttribute).Description : field.Name;
         }
     }
 }

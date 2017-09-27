@@ -17,11 +17,9 @@ namespace SmartEnum.Test
 
             var func = expression.Compile();
 
-            var values = (Animal[]) Enum.GetValues(typeof(Animal));
+            var result = EnumExtensions.GetValues<Animal>().OrderBy(func);
 
-            var result = values.OrderBy(func);
-
-            var expectations = EnumExtensions.EnumToDictionary<Animal>().OrderBy(x => x.Value).Select(x => x.Key);
+            var expectations = EnumExtensions.ToDescriptionDictionary<Animal>().OrderBy(x => x.Value).Select(x => x.Key);
 
             Assert.That(result, Is.EqualTo(expectations));
         }

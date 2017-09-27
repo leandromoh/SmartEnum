@@ -9,7 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartEnum</RootNamespace>
     <AssemblyName>SmartEnum</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworks>net35;net40;netcoreapp1.0</TargetFrameworks>
+ <!-- <TargetFrameworkVersion>v3.5</TargetFrameworkVersion> -->   
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -46,7 +47,7 @@
     <Compile Include="GetValues.cs" />
     <Compile Include="OrderByDescription.cs" />
     <Compile Include="EnumExtensions.cs" />
-    <Compile Include="EnumToDictionary.cs" />
+    <Compile Include="ToDescriptionDictionary.cs" />
     <Compile Include="GetDescription.cs" />
     <Compile Include="IsDefined.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

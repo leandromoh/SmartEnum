@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="DecomposeTest.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="EnumToDictionaryTest.cs" />
+    <Compile Include="ToDescriptionDictionaryTest.cs" />
     <Compile Include="GetDescriptionTest.cs" />
     <Compile Include="GetNamesTest.cs" />
     <Compile Include="GetValuesTest.cs" />

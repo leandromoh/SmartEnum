@@ -6,17 +6,17 @@ namespace SmartEnum
 {
     public static partial class EnumExtensions
     {
-        public static IEnumerable<KeyValuePair<TEnum, string>> EnumToDictionary<TEnum>()
+        public static IEnumerable<KeyValuePair<TEnum, string>> ToDescriptionDictionary<TEnum>()
             where TEnum : struct
         {
             var type = typeof(TEnum);
             if (!type.IsEnum) throw new ArgumentException("T must be an Enum");
 
-            return EnumToDictionary(type)
+            return ToDescriptionDictionary(type)
                 .Select(x => new KeyValuePair<TEnum, string>((TEnum)Convert.ChangeType(x.Key, type), x.Value));
         }
 
-        private static Dictionary<Enum, string> EnumToDictionary(Type type)
+        private static Dictionary<Enum, string> ToDescriptionDictionary(Type type)
         {
             Dictionary<Enum, string> dictionary;
 

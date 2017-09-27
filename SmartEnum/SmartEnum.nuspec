@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SmartEnum</id>
+    <version>1.0.0</version>
+    <title>SmartEnum</title>
+    <authors>Leandro Fernandes Vieira</authors>
+    <owners>Leandro Fernandes Vieira</owners>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/leandromoh/SmartEnum</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains extra methods to improve the usage of enums</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>enum enumhelper smartenum</tags>
+  </metadata>
+</package>

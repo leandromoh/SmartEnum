@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace SmartEnum.Test
 {
     [TestFixture]
-    public class EnumToDictionaryTest
+    public class ToDescriptionDictionaryTest
     {
         [Test]
         public void EnumToDictionary()
         {
-            var result = EnumExtensions.EnumToDictionary<Animal>().OrderBy(x => x.Key);
+            var result = EnumExtensions.ToDescriptionDictionary<Animal>().OrderBy(x => x.Key);
 
             var expectations = new Dictionary<Animal, string>()
             {
