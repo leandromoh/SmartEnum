@@ -30,7 +30,7 @@ namespace SmartEnum
 
             foreach (Enum e in Enum.GetValues(enumType))
             {
-                descriptionDictionary[e] = Descriptions[e] = GetDescriptionFromAttribute(enumType.GetField(e.ToString()));
+                descriptionDictionary[e] = Descriptions[e] = GetDescriptionFromField(enumType.GetField(e.ToString()));
             }
 
             return descriptionDictionary;
@@ -44,11 +44,12 @@ namespace SmartEnum
 
             #else  
 
-            return field
-                        .GetCustomAttributes(typeof(DescriptionAttribute), false)
-                        .OfType<DescriptionAttribute>()
-                        .FirstOrDefault()
-                       ?.Description ?? field.Name;
+            var customAttributes = field
+                                       .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                                       .Cast<DescriptionAttribute>()
+                                       .ToList();
+
+            return customAttributes.FirstOrDefault()?.Description ?? "field.Name";
 
             #endif
         }

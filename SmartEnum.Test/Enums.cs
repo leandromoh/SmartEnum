@@ -4,13 +4,13 @@ namespace SmartEnum.Test
 {
     public enum Animal
     {
-        [Description("Camelo")]
+        [DescriptionTest("Camelo")]
         Camel = 1,
-        [Description("Baleia")]
+        [DescriptionTest("Baleia")]
         Whale = 2,
-        [Description("Dragão")]
+        [DescriptionTest("Dragão")]
         Dragon = 4,
-        [Description("Abelha")]
+        [DescriptionTest("Abelha")]
         Bee = 8,
         Elephant = 16,
     }
