@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using System.Linq;
 
 namespace SmartEnum
 {
@@ -37,9 +38,19 @@ namespace SmartEnum
 
         private static string GetDescriptionInAttribute(FieldInfo field)
         {
-            object[] customAttributes = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            #if CORE
+                
+            return field.Name;
 
-            return customAttributes.Length > 0 ? (customAttributes[0] as DescriptionAttribute).Description : field.Name;
+            #else  
+
+            return field
+                        .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                        .OfType<DescriptionAttribute>()
+                        .FirstOrDefault()
+                       ?.Description ?? field.Name;
+
+            #endif
         }
     }
 }

@@ -7,8 +7,7 @@ namespace SmartEnum
         public static TEnum[] GetValues<TEnum>()
             where TEnum : struct
         {
-            var type = typeof(TEnum);
-            if (!type.IsEnum) throw new ArgumentException("T must be an Enum");
+            var type = ThrowIfNotEnum<TEnum>();
 
             return (TEnum[])Enum.GetValues(type);
         }

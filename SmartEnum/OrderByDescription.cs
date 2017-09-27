@@ -15,10 +15,9 @@ namespace SmartEnum
         public static Expression<Func<TSource, int>> OrderByDescription<TSource, TEnum>(this Expression<Func<TSource, TEnum>> source, Func<Enum, string> func)
             where TEnum : struct
         {
-            var enumType = typeof(TEnum);
-            if (!enumType.IsEnum) throw new InvalidOperationException();
+            var type = ThrowIfNotEnum<TEnum>();
 
-            var body = ((TEnum[])Enum.GetValues(enumType))
+            var body = ((TEnum[])Enum.GetValues(type))
                 .OrderBy(value => func(value as Enum))
                 .Select((value, ordinal) => new { value, ordinal })
                 .Aggregate((Expression)null, (next, item) => next == null ? (Expression)

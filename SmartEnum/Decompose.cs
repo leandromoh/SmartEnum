@@ -9,8 +9,7 @@ namespace SmartEnum
         public static IEnumerable<TEnum> Decompose<TEnum>(this TEnum e)
             where TEnum : struct
         {
-            var type = typeof(TEnum);
-            if (!type.IsEnum) throw new ArgumentException("T must be an Enum");
+            var type = ThrowIfNotEnum<TEnum>();
 
             var val = e as Enum;
 

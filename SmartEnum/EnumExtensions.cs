@@ -14,5 +14,18 @@ namespace SmartEnum
         {
             GetDescriptionFromAttribute = GetDescriptionInAttribute;
         }
+
+        private static Type ThrowIfNotEnum<TEnum>()
+        {
+            var type = typeof(TEnum);
+
+            #if CORE
+                if (type.GetTypeInfo().IsEnum) throw new ArgumentException("T must be an Enum");
+            #else  
+                if (!type.IsEnum) throw new ArgumentException("T must be an Enum");
+            #endif
+
+            return type;
+        }
     }
 }

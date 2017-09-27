@@ -9,8 +9,7 @@ namespace SmartEnum
         public static IEnumerable<KeyValuePair<TEnum, string>> ToDescriptionDictionary<TEnum>()
             where TEnum : struct
         {
-            var type = typeof(TEnum);
-            if (!type.IsEnum) throw new ArgumentException("T must be an Enum");
+            var type = ThrowIfNotEnum<TEnum>();
 
             return ToDescriptionDictionary(type)
                 .Select(x => new KeyValuePair<TEnum, string>((TEnum)Convert.ChangeType(x.Key, type), x.Value));
